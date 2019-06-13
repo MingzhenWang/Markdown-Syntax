@@ -305,7 +305,7 @@ Markdown借助 table、tr、td等表格标签的 bgcolor 属性来实现背景�
 
     <table><tr><td bgcolor=orange>背景色是：orange</td></tr></table>
 **效果图：**
-<table><tr><td bgcolor=orange>背景色是：orange</td></tr></table>
+<table><tr><td bgcolor="orange">背景色是：orange</td></tr></table>
 ## 六、高级功能
 ### 1. LaTeX数学公式
 LaTeX数学公式分为两种，行内公式和行间公式，如下：
@@ -314,7 +314,7 @@ LaTeX数学公式分为两种，行内公式和行间公式，如下：
     $行内公式$
     这是一个行内公式$\sqrt{x^{2}}$
 **效果图：**
-这是一个行内公式$\sqrt{x^{2}}$
+这是一个行内公式$\sqrt{x^{2}}$  
 （2）行间公式
 
     $$行间公式$$
