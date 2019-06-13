@@ -308,7 +308,7 @@ Markdown借助 table、tr、td等表格标签的 bgcolor 属性来实现背景�
 <table><tr><td bgcolor="orange">背景色是：orange</td></tr></table>
 ## 六、高级功能
 ### 1. LaTeX数学公式
-LaTeX数学公式分为两种，行内公式和行间公式，如下：
+LaTeX数学公式分为两种，行内公式和行间公式，如下：<br/>
 （1）行内公式
 
     $行内公式$
@@ -320,9 +320,9 @@ LaTeX数学公式分为两种，行内公式和行间公式，如下：
     $$行间公式$$
     这是一个行内公式$$\sqrt{x^{2}}$$
 **效果图：**
-这是一个行内公式$$\sqrt{x^{2}}$$
+这是一个行内公式$$\sqrt{x^{2}}$$<br/>
 具体用法可参考如下内容：
-[CSDN-markdown编辑器使用LaTex数学公式](https://blog.csdn.net/testcs_dn/article/details/44229085)
+[CSDN-markdown编辑器使用LaTex数学公式](https://blog.csdn.net/testcs_dn/article/details/44229085)<br/>
 [常用数学符号的 LaTeX 表示方法](https://www.mohu.org/info/symbols/symbols.htm)
 
 ### 2. 流程图
