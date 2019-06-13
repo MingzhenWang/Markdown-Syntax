@@ -187,7 +187,7 @@ Markdown 支持以比较简短的自动链接形式来处理**网址**和**电�
     <392248244@qq.com>
 ### 2 反斜杠
 Makrdwon可以利用反斜杠来插入一些在语法中有其他意义的符号，例如：如果你想在文字两边加星号，但不想出现强调的效果，可以如下操作：
-
+[392248244@qq.com]
     \*你好\*,这个星号会正常显示
 Markdown支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
     
@@ -205,6 +205,13 @@ Markdown支持以下这些符号前面加上反斜杠来帮助插入普通的符
     ! 惊叹号
 Markdown中还存在通过Unicode码来输入的特殊字符，示例如下：
 
+    &#10084;
+    &#9742;
+**效果图：**
+&#10084;
+&#9742;
+还可以通过Unicode字符实现缩进。
+
 想知道字符对应的Unicode码，可以看这个网站：https://unicode-table.com/cn/
 ### 3. 表格
 Markdown中表格的基本写法很简单，和表格的形状很相似：
@@ -216,7 +223,11 @@ Markdown中表格的基本写法很简单，和表格的形状很相似：
 
     学号|姓名|分数
     :-|-:|:-:
-    1143106|小明|99
+    1143106|小明1143106|99999999
+**效果图：**
+学号|姓名|分数
+:-|-:|:-:
+1143106|小明1143106|99999999
 ### 4. 任务列表
 Markdown语法支持任务列表：
 * 首先是一个减号`-`
@@ -230,17 +241,154 @@ Markdown语法支持任务列表：
     - [ ] this is a complete item
     - [x] this is an incomplete item
 ```
-
+**效果图：**
+- [x] [links](), **formatting**, and ~~tags~~ supported
+- [ ] list syntax required (any unordered or ordered list supported)
+- [ ] this is a complete item
+- [x] this is an incomplete item
 ### 5. 脚注|注释
+（1）脚注
 Markdown语法使用[^]来定义脚注：
 
     这是一个脚注的例子[^1]
     [^1]: 这里是脚注
+**效果图：**
+这是一个脚注的例子[^1]
+[^1]: 这里是脚注
 
+（2）注释
 注释，是给自己看的，预览时也不会出现，当然发布出去别人也不会看见。
 
     <!--这是注释-->
+**效果图：**
+<!--这是注释-->
+### 6. emoji表情符号
+Markdown中可以使用emoji表情符号，语法格式`:EMOJICODE:`，如下：
+
+    :smile:
+    :new_moon_with_face:
+**效果图：**
+:smile:
+:new_moon_with_face:
+详细EMOJICODE可见：
+https://www.webpagefx.com/tools/emoji-cheat-sheet/
+
 
 ## 五、常用弥补Markdown的Html标签
+有些Markdown语法不支持的功能，可以使用内置HTML的方式实现。
+### 1. 字体
+使用Html标签来控制文字的字体、颜色、大小，如下：
 
-## 六、其他
+    <font face="微软雅黑" color="red" size="3">字体、颜色及大小</font>
+    <font color="#0000ff">字体颜色</font>
+**效果图：**
+    <font face="微软雅黑" color="red" size="3">字体、颜色及大小</font>
+    <font color="#0000ff">字体颜色</font>
+### 2.文本对其方式
+Markdown支持控制表格中的对其方式，但不支持文本的对其方式，我们可以通过HTML标签进行控制，如下：
+
+    <p align="left">居左文本</p>
+    <p align="center">居中文本</p>
+    <p align="right">居右文本</p>
+**效果图：**
+<p align="left">居左文本</p>
+<p align="center">居中文本</p>
+<p align="right">居右文本</p>
+### 3.下划线
+下划线的HTML标签很简单，如下：
+
+    <u>下划线文本</u>
+**效果图：**
+<u>下划线文本</u>
+### 4.背景色
+Markdown借助 table、tr、td等表格标签的 bgcolor 属性来实现背景色的功能，如下：
+
+    <table><tr><td bgcolor=orange>背景色是：orange</td></tr></table>
+**效果图：**
+<table><tr><td bgcolor=orange>背景色是：orange</td></tr></table>
+## 六、高级功能
+### 1. LaTeX数学公式
+LaTeX数学公式分为两种，行内公式和行间公式，如下：
+（1）行内公式
+
+    $行内公式$
+    这是一个行内公式$\sqrt{x^{2}}$
+**效果图：**
+这是一个行内公式$\sqrt{x^{2}}$
+（2）行间公式
+
+    $$行间公式$$
+    这是一个行内公式$$\sqrt{x^{2}}$$
+**效果图：**
+这是一个行内公式$$\sqrt{x^{2}}$$
+具体用法可参考如下内容：
+[CSDN-markdown编辑器使用LaTex数学公式](https://blog.csdn.net/testcs_dn/article/details/44229085)
+[常用数学符号的 LaTeX 表示方法](https://www.mohu.org/info/symbols/symbols.htm)
+
+### 2. 流程图
+Markdown流程图语法主要由3部分组成：流程图语块定义、流程图符号声明和流程处理。
+流程图代码分两块，上面一块是**创建流程（创建元素）**，隔一行，**创建流程的走向（连接元素）**。
+#### （1）创建流程（元素）：tag=>type: content:>url
+* tag是流程图中的标签，在第二段连接元素时会用到。名称可以任意，一般为流程的英文缩写和数字组合。
+* type用来确定标签的类型，=>后面表示类型。由于标签的名称可以任意指定，所以要依赖type来确定标签的类型。
+* 标签有6中类型：start、end、operation、subroutine、condition、inputoutput。
+* content是流程图文本框中的描述内容，`:`表示内容，中英文均可。（冒号和内容之间一定要有一个空格）
+* url是一个链接，与框中的文本相绑定，`:>`后面就是对应的url地址，点击文本时可以通过链接跳转到url指定页面。
+####（2）指向流程（连接元素）：标识（类别）->下一个标识
+* 使用 `->` 来连接两个元素
+* 对于condition类型，有yes和no两个分支，如示例中的cond(yes)和cond(no)
+* 每个元素可以指定分支方向，默认向下，也可以用right指向右边（right、left、top、bottom），如示例中cond2(yes,right)
+
+流程图元素：
+* 开始
+  `st=>start:开始`
+* 操作
+  `opl=>operation:操作、执行说明`
+* 条件
+  `cond=>condition:确认？`
+* 子程序
+  `sub1=>subroutine:子程序操作说明`
+* 用户输入或输出
+  `io1=>inputoutput:输入密码`
+* 结束
+  `e=>end:结束`
+
+示例如下：
+
+    ```flow
+    st=>start: 开始 
+    e=>end: 登录 
+    io1=>inputoutput: 输入用户名密码 
+    sub1=>subroutine: 数据库查询子类 
+    cond=>condition: 是否有此用户 
+    cond2=>condition: 密码是否正确 
+    op=>operation: 读入用户信息
+
+    st->io1->sub1->cond 
+    cond(yes,right)->cond2 
+    cond(no,right)->io1(right) 
+    cond2(yes,right)->op(right)->e 
+    cond2(no,right)->io1 
+    ```
+**效果图：**
+```flow
+st=>start: 开始 
+e=>end: 登录 
+io1=>inputoutput: 输入用户名密码 
+sub1=>subroutine: 数据库查询子类 
+cond=>condition: 是否有此用户 
+cond2=>condition: 密码是否正确 
+op=>operation: 读入用户信息
+
+st->io1->sub1->cond 
+cond(yes,right)->cond2 
+cond(no,right)->io1(right) 
+cond2(yes,right)->op(right)->e 
+cond2(no,right)->io1 
+```
+
+
+
+### 3. 序列图
+
+### 4. 甘特图
